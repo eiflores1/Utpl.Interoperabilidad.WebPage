@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
+import requests 
+from requests.auth import HTTPBasicAuth
 
 app = Flask(__name__)
 
@@ -29,6 +31,11 @@ def add():
     personaList.append({"nombre": nombre, "apellido": apellido, "edad": edad})
 
     return redirect(url_for('personas'))
+
+@app.route('/estudiantes')
+def estudiantes():
+    responseEstudiantes = requests.get('https://utpl-interoperabilidad-eiflores1uvicorn.onrender.com/v1_0/estudiantes',auth=HTTPBasicAuth('admin', 'admin'))
+    return render_template('estudiantes.html', estudiantesl=responseEstudiantes.json())
 
 if __name__ == '__main__':
     app.run(debug=True)
