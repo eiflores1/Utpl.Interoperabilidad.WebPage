@@ -54,7 +54,12 @@ def addEstudiante():
         "ciudad": ciudad
     }
 
+    print("Datos del nuevo estudiante:", room_data)
+
     responseEstudiantesS = requests.post('https://utplwso2.tk/apiestudiantes/2.0/estudiantes', json=room_data)
+    
+    print("Código de respuesta:", responseEstudiantesS.status_code)
+    print("Respuesta del servidor:", responseEstudiantesS.json())
 
     return redirect(url_for('estudiantes'))
 
