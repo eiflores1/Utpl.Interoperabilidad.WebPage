@@ -40,7 +40,7 @@ def estudiantes():
 
 @app.route('/estudiantes', methods=['POST'])
 def addEstudiante():
-    print("llego por aqui a guardar estudiantes")
+    print("llego a la funcion estudiante")
 
     nombre = request.form.get('nombre')
     tiempo = request.form.get('tiempo')
