@@ -37,7 +37,7 @@ def estudiantes():
     return render_template('estudiantes.html', estudiantesl=responseEstudiantes.json())
 
 @app.route('/estudiantes', methods=['POST'])
-def addestudiantes():
+def addEstudiante():
     print("llego por aqui a guardar estudiantes")
 
     nombre = request.form.get('nombre')
