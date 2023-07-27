@@ -6,11 +6,6 @@ app = Flask(__name__)
 
 API_KEY = 'eyJ4NXQiOiJPREUzWTJaaE1UQmpNRE00WlRCbU1qQXlZemxpWVRJMllqUmhZVFpsT0dJeVptVXhOV0UzWVE9PSIsImtpZCI6ImdhdGV3YXlfY2VydGlmaWNhdGVfYWxpYXMiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9'
 
-# Lista de personas
-personaList = [{"nombre": "Juan", "apellido": "Perez", "edad": 25},
-            {"nombre": "Ana", "apellido": "Gomez", "edad": 30},
-            {"nombre": "Carlos", "apellido": "Lopez", "edad": 45}]
-
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -36,7 +31,8 @@ def add():
 
 @app.route('/estudiantes')
 def estudiantes():
-    responseEstudiantes = requests.get('https://utplwso2.tk/apiestudiantes/2.0/estudiantes',auth=HTTPBasicAuth('admin', 'admin'))
+    headers = {'apikey': API_KEY}
+    responseEstudiantes = requests.get('https://utplwso2.tk/apiestudiantes/2.0/estudiantes',headers=headers)
     return render_template('estudiantes.html', estudiantesl=responseEstudiantes.json())
 
 if __name__ == '__main__':
