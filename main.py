@@ -34,6 +34,7 @@ def estudiantes():
     headers = {'apikey': API_KEY}
     responseEstudiantes = requests.get('https://utplwso2.tk/apiestudiantes/2.0/estudiantes',headers=headers)
     return render_template('estudiantes.html', estudiantesl=responseEstudiantes.json())
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
