@@ -35,7 +35,26 @@ def estudiantes():
     responseEstudiantes = requests.get('https://utplwso2.tk/apiestudiantes/2.0/estudiantes',headers=headers)
     print(responseEstudiantes.json())
     return render_template('estudiantes.html', estudiantesl=responseEstudiantes.json())
-    
+
+@app.route('/estudiantes', methods=['POST'])
+def addestudiantes():
+    print("llego por aqui a guardar estudiantes")
+
+    nombre = request.form.get('nombre')
+    tiempo = request.form.get('tiempo')
+    identificacion = int(request.form.get('identificacion'))
+    ciudad = int(request.form.get('ciudad'))
+
+    room_data = {
+        "nombre": nombre,
+        "tiempo": tiempo,
+        "identificacion": identificacion,
+        "ciudad": ciudad
+    }
+
+    responseEstudiantesS = requests.post('https://utplwso2.tk/apiestudiantes/2.0/estudiantes', json=room_data)
+
+    return redirect(url_for('estudiantes'))
 
 if __name__ == '__main__':
     app.run(debug=True)
