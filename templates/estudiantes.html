@@ -28,4 +28,26 @@ Lista de Estudiantes
     {% endfor %}
   </tbody>
 </table>
+
+<h4 class="my-4">Agregar una nueva persona</h4>
+<form action="/personas" method="post">
+  <div class="mb-3">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="nombre" name="nombre" required>
+  </div>
+  <div class="mb-3">
+    <label for="tiempo class="form-label">Tiempo</label>
+    <input type="text" class="form-control" id="tiempo name="tiempo required>
+  </div>
+  <div class="mb-3">
+    <label for="identificacion" class="form-label">Identificación</label>
+    <input type="text" class="form-control" id="identificacion" name="identificacion" required>
+  </div>
+  <div class="mb-3">
+    <label for="ciudad" class="form-label">Ciudad</label>
+    <input type="number" class="form-control" id="ciudad" name="ciudad" required>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Agregar</button>
+</form>
 {% endblock %}
