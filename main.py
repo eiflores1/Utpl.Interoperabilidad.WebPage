@@ -1,7 +1,6 @@
 #tarea 2.2
 from flask import Flask, render_template, request, redirect, url_for
 import requests 
-from requests.auth import HTTPBasicAuth
 
 app = Flask(__name__)
 
@@ -53,7 +52,7 @@ def addEstudiante():
     estudiante_data = {"nombre": nombre, "tiempo": tiempo, "identificacion": identificacion, "ciudad": ciudad}
     
     headers = {'apikey': API_KEY}
-    responseEstudiante = requests.post('https://utplwso2.tk/apiestudiantes/2.0/estudiantes', json=cliente_data, headers=headers)
+    responseestudiante = requests.post('https://utplwso2.tk/apiestudiantes/2.0/estudiantes', json=estudiante_data, headers=headers)
     
     return redirect(url_for('estudiantes'))
 
